@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import { AnimatedBg, Transition } from "scroll-background";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
+import BodyContainer from "./components/Body/BodyContainer";
+import FooterContainer from "./components/Footer/FooterContainer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AnimatedBg>
+        <Transition height="0px" from="#000" to="#FFF" />
+        <NavbarContainer />
+      </AnimatedBg>
+
+      <Route exact path="/" render={props => <BodyContainer {...props} />} />
+      <FooterContainer />
     </div>
   );
 }
